@@ -3,7 +3,6 @@
 
 # imports
 import numpy as np
-from encryption_algs import encryption_alg3 as encrypt
 # document paths
 imagepath ="/unencrypted_files/image"
 textdocpath ="/unencrypted_files/textdoc"
@@ -46,6 +45,3 @@ def main():
     decoded_data = encrypt.decode(encoded_image)
     print(decoded_data)
 
-# python encryption_algs/encryption_alg3.py -e mountains.jpeg -f data.csv -b 1
-# python encryption_algs/encryption_alg3.py -e image.PNG -f data.csv -b 2
-# python steganography_advanced.py -d image_encoded.PNG -f data_decoded.csv -b 3
