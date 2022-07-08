@@ -143,3 +143,5 @@ if __name__ == "__main__":
             # decode the secret data from the image and print it in the console
             decoded_data = decode(input_image, n_bits=args.n_bits)
             print("[+] Decoded data:", decoded_data)
+
+##https://www.thepythoncode.com/article/hide-secret-data-in-images-using-steganography-python
