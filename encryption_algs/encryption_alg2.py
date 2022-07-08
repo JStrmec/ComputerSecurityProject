@@ -1,6 +1,5 @@
 import cv2
-
-
+import main as m
 
 def encode(image_name, secret_data):
     # read the image
@@ -15,13 +14,13 @@ def encode(image_name, secret_data):
     secret_data += "====="
     data_index = 0
     # convert data to binary
-    binary_secret_data = to_bin(secret_data)
+    binary_secret_data = m.to_binary(secret_data)
     # size of data to hide
     data_len = len(binary_secret_data)
     for row in image:
         for pixel in row:
             # convert RGB values to binary format
-            r, g, b = to_bin(pixel)
+            r, g, b = m.to_binary(pixel)
             # modify the least significant bit only if there is still data to store
             if data_index < data_len:
                 # least significant red pixel bit
@@ -47,7 +46,7 @@ def decode(image_name):
     binary_data = ""
     for row in image:
         for pixel in row:
-            r, g, b = to_bin(pixel)
+            r, g, b = m.to_binary(pixel)
             binary_data += r[-1]
             binary_data += g[-1]
             binary_data += b[-1]

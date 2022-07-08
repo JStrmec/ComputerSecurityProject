@@ -1,7 +1,6 @@
 import cv2
-import numpy as np
 import os
-
+import main as m
 
 def encode(image_name, secret_data, n_bits=2):
     # read the image
@@ -20,14 +19,14 @@ def encode(image_name, secret_data, n_bits=2):
         secret_data += b"====="
     data_index = 0
     # convert data to binary
-    binary_secret_data = to_bin(secret_data)
+    binary_secret_data = m.to_binary(secret_data)
     # size of data to hide
     data_len = len(binary_secret_data)
     for bit in range(1, n_bits+1):
         for row in image:
             for pixel in row:
                 # convert RGB values to binary format
-                r, g, b = to_bin(pixel)
+                r, g, b = m.to_binary(pixel)
                 # modify the least significant bit only if there is still data to store
                 if data_index < data_len:
                     if bit == 1:
@@ -66,7 +65,7 @@ def decode(image_name, n_bits=1, in_bytes=False):
     for bit in range(1, n_bits+1):
         for row in image:
             for pixel in row:
-                r, g, b = to_bin(pixel)
+                r, g, b = m.to_binary(pixel)
                 binary_data += r[-bit]
                 binary_data += g[-bit]
                 binary_data += b[-bit]
@@ -132,4 +131,3 @@ if __name__ == "__main__":
             decoded_data = decode(input_image, n_bits=args.n_bits)
             print("[+] Decoded data:", decoded_data)
 
-##https://www.thepythoncode.com/article/hide-secret-data-in-images-using-steganography-python
