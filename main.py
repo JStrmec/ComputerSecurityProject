@@ -8,6 +8,8 @@ audiopath ="/unencrypted_files/audio"
 videopath ="/unencrypted_files/video"
 error =""
 
+
+
 def checkByCase(letter):
     match letter:
         case 'a':
@@ -18,12 +20,14 @@ def checkByCase(letter):
             return audiopath
         case 'd':
             return videopath
-        case 'e':
-            return error
+    return error
 
 
 
 def main():
     print('Chose a file type to encrypt by letter: \n\ta) image\n\tb) text file\n\tc) audio file\n\td) video file')
     fileType = input()
-    checkByCase(fileType.lower().strip())
+    unenecrypted_filepath = checkByCase(fileType.lower().strip())
+    print("?")
+    information_to_encrypt = input()
+    
