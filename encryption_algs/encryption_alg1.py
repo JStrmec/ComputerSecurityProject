@@ -130,8 +130,7 @@ def main():
  
     elif (a == 2):
         print("Decoded Word :  " + decode())
-    else:
-        raise Exception("Enter correct input")
+
  
 # Driver Code
 if __name__ == '__main__' :
