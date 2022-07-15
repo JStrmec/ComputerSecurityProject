@@ -2,6 +2,7 @@
 # CPTS 427 Project
 
 # imports
+import os
 import numpy as np
 from encryption_algs import encryption_alg2 as encrypt1
 from encryption_algs import encryption_alg3 as encrypt2
@@ -23,6 +24,14 @@ def to_binary(data):
     else:
         raise TypeError("Type not supported.")
 
+def initialfile_to_outputfile(initial_file):
+    # sets file path for files
+    path = "ComputerSecurityProject/unencrypted_files/"
+    # split the filename and the image extension
+    filename, ext = initial_file.split(".")
+    output_image = os.path.join(path, f"{filename}_encoded.{ext}")
+    return output_image
+
 def main():
     print('Chose a file type to encrypt by inputting the corresponding letter: \n\ta)  image\n\tb)  text file\n')
     fileType = input()
@@ -31,13 +40,21 @@ def main():
     file_num = input()
     print("Type in your secret message to encrypt: ")
     secret = input()
-
+    
     if file_type =='a':
-    encoded_image = encrypt2.encode(file_path, information_to_encrypt)
-    decoded_data = encrypt2.decode(encoded_image)
+        output_file = initialfile_to_outputfile(images_dict[int(file_num.strip())])
+        encoded_image = encrypt2.encode(output_file, secret)
+        print("Would you like to decode the data?  y or n")
+        affirmative = input()
+        if affirmative.lower().strip() == 'y':
+            decoded_data = encrypt2.decode(encoded_image)
+            print("Secret message is:", decoded_data)
+        else:
+            print("Goodbye!")
     print(decoded_data)
     if file_type =='b':
-
+        #output_file = initialfile_to_outputfile(files_dict[int(file_num.strip())])
+        print("Goodbye.")
     
     
 
