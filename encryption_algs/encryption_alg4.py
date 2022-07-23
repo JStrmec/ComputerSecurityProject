@@ -31,9 +31,9 @@ def encode(file_name, secret_data):
             break
     
 def decode(file_name):
-     crypto =''
-     file2 = open(f"encrypted_files/{file_name}_encoded.txt","r") 
-     while True:
+    crypto =''
+    file2 = open(f"encrypted_files/{file_name}_encoded.txt","r") 
+    while True:
         data = file2.readline()
         if not data:
             break
@@ -42,34 +42,14 @@ def decode(file_name):
             crypto+='0'
         else:
             crypto+='1'
-         
-     #print("Encrypted Code Bits:") 
-     #print(crypto)
-     data_lencr = len(crypto)  
-     secret = ""
-    #  decoded_data = ""
-    #  for byte in crypto:
-    #     decoded_data += chr(int(byte, 2))
-    #     if decoded_data[-5:] == "=====":
-    #           break
-     for i in range(0, data_lencr, 7):
-         num=crypto[0:i+1]
-         num=num+int(crypto[i+0])*64
-         if(i+1<data_lencr):
-             num=num+int(crypto[i+1])*32
-         if(i+2<data_lencr):
-             num=num+int(crypto[i+2])*16
-         if(i+3<data_lencr):
-             num=num+int(crypto[i+3])*8
-         if(i+4<data_lencr):
-             num=num+int(crypto[i+4])*4
-         if(i+5<data_lencr):
-             num=num+int(crypto[i+5])*2
-         if(i+6<data_lencr):
-             num=num+int(crypto[i+6])*1
-         if(num>64):
-             charac = chr(num)
-             secret+=charac
-         if(num==0):
-             break;  
-     return secret
+    # len of binary result 
+    data_lencr = len(crypto)  
+    #secret = ""
+    all_bytes = [crypto[i: i+8] for i in range(0, data_lencr, 8) ]
+    # convert from bits to characters
+    decoded_data = ""
+    for byte in all_bytes:
+        decoded_data += chr(int(byte, 2))
+        if decoded_data[-5:] == "=====":
+            break
+    return decoded_data[:-5]

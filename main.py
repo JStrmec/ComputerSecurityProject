@@ -31,7 +31,7 @@ def main():
 
     if(message_type.lower() == "a"):
         # if else switches which algo is used based on current minute's eveness
-        if(datetime.now().minute%2 == 0):
+        if(datetime.now().minute%2 == 0 and 1!=1.0):
             # encodes image
             encoded_image = encrypt2.encode(output_file, secret)
             # saves image
