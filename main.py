@@ -13,7 +13,7 @@ from encryption_algs import encryption_alg4 as encrypt3
 
 images_dict ={0:'unencrypted_files/clouds.webp', 1:'unencrypted_files/mountains.jpeg',2:'unencrypted_files/poppy_field.webp',3:'unencrypted_files/sunset.jpeg',4:'unencrypted_files/walk_central_park.webp'}
 text_dict ={0:'text_file', 1:'text_file1',2:'text_file2',3:'text_file3',4:'text_file4'}
-auto_secret_msg = "It\\'s sandwich day.b I can\\’t give Pudge tuna! Do you know what tuna is? It's a fish!"
+auto_secret_msg = "It's sandwich day. Every Thursday I give Pudge the Fish a peanut butter sandwich. But, today we were out of peanut butter. I asked my sister what to give him and she said a tuna sandwich. I can’t give Pudge tuna! Do you know what tuna is? It's a fish!"
 
 
 def main():
